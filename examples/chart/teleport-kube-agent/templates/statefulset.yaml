@@ -18,8 +18,12 @@ metadata:
     {{- toYaml .Values.annotations.deployment | nindent 4 }}
   {{- end }}
 spec:
+  podManagementPolicy: Parallel
   serviceName: {{ .Release.Name }}
   replicas: {{ $replicaCount }}
+  updateStrategy:
+    rollingUpdate:
+      maxUnavailable: 75%
   selector:
     matchLabels:
       app: {{ .Release.Name }}
