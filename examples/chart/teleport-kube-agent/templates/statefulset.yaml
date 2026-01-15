@@ -55,6 +55,11 @@ spec:
       terminationGracePeriodSeconds: {{ .Values.terminationGracePeriodSeconds }}
       {{- end }}
       podManagementPolicy: {{ .Values.highAvailability.podManagementPolicy }}
+      {{- if .Values.highAvailability.maxUnavailable }}
+      updateStrategy:
+        rollingUpdate:
+          maxUnavailable: 50%
+      {{- end }}
       {{- if or .Values.affinity (gt (int $replicaCount) 1) }}
       affinity:
         {{- if .Values.affinity }}

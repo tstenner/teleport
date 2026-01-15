@@ -819,6 +819,17 @@ highAvailability:
   # `Parallel` will scale all replicas up / down in parallel.
   podManagementPolicy: OrderedReady
 
+
+  # highAvailability.maxUnavailable(string) -- maximum number of pods to update at once
+  #
+  # Sets the [`spec.updateStrategy.rollingUpdate.maxUnavailable`](https://kubernetes.io/docs/concepts/workloads/controllers/statefulset/#maximum-unavailable-pods) field.
+  # Valid values are either an absolute count to restart at once or a percentage (e.g. `50%`).
+  #
+  # <Admonition type="note">
+  #   This requires either Kubernetes 1.37 or the Feature Gate to be enabled
+  # </Admonition>
+  maxUnavailable: ""
+
   # highAvailability.requireAntiAffinity(bool) -- configures Kubernetes `requiredDuringSchedulingIgnoredDuringExecution`
   # to require that multiple Teleport pods must not be scheduled on the same physical host.
   #

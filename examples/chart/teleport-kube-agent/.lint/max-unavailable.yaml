@@ -1,0 +1,7 @@
+authToken: auth-token
+proxyAddr: proxy.example.com:3080
+kubeClusterName: test-kube-cluster-name
+highAvailability:
+  replicas: 5
+  podManagementPolicy: Parallel
+  maxUnavailable: 75%
